@@ -1,0 +1,25 @@
+# Render Blueprint: creates the web service from the Dockerfile in this repo.
+# Secrets are NOT stored here. Set DATABASE_URL in the Render dashboard
+# (Environment tab), see README.md.
+services:
+  - type: web
+    name: scramjet
+    runtime: docker
+    plan: free
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        sync: false            # set manually in the dashboard
+      - key: COOKIE_SECURE
+        value: "1"             # Render serves HTTPS
+      - key: SESSION_DAYS
+        value: "30"
+      - key: MAX_STREAMS
+        value: "128"           # per browser tab/session
+      - key: MAX_TOTAL_STREAMS
+        value: "512"           # all users together (file descriptors, memory)
+      - key: MAX_SESSIONS
+        value: "64"
+      - key: MAX_USERS
+        value: "2000"          # caps the 1 GB database

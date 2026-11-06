@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<title>Свобода</title>
+
+	<link rel="shortcut icon" href="favicon.ico" />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+	<script src="/scram/scramjet.all.js"></script>
+	<script src="/baremux/index.js"></script>
+
+	<link rel="stylesheet" href="index.css" />
+	<script src="register-sw.js" defer></script>
+	<script src="search.js" defer></script>
+	<script src="index.js" defer></script>
+	<script src="assets/js/auth.js" defer></script>
+</head>
+<body>
+	<button id="logout-btn" type="button" class="hidden">Выйти</button>
+
+	<main>
+		<div class="brand">С В О Б О Д А</div>
+
+		<!-- Вход и регистрация: по центру страницы, только логин и пароль -->
+		<section id="auth-view" class="hidden">
+			<form id="auth-form" class="auth-card" autocomplete="on">
+				<input id="auth-username" class="input auth-input" type="text" placeholder="Имя пользователя"
+					autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="32" />
+				<input id="auth-password" class="input auth-input" type="password" placeholder="Пароль"
+					autocomplete="current-password" maxlength="128" />
+				<div class="auth-buttons">
+					<button id="login-btn" type="submit" class="btn-primary">Войти</button>
+					<button id="register-btn" type="button" class="btn-secondary">Регистрация</button>
+				</div>
+				<p id="auth-msg" class="auth-msg" role="alert"></p>
+			</form>
+		</section>
+
+		<!-- Поиск: доступен только после входа -->
+		<section id="app-view" class="hidden">
+			<form id="sj-form" class="search">
+				<svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+					<path d="M16 16L21 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+				</svg>
+
+				<input id="sj-search-engine" value="https://www.google.com/search?q=%s" type="hidden" />
+
+				<input
+					id="sj-address"
+					class="input"
+					type="text"
+					placeholder="Искать свободно..."
+					autocomplete="off"
+					spellcheck="false"
+					aria-label="Поиск"
+				/>
+
+				<span class="shortcut">Enter</span>
+			</form>
+
+			<div class="tagline">В каждом запросе — простор</div>
+		</section>
+
+		<div class="error-area">
+			<p id="sj-error"></p>
+			<pre id="sj-error-code"></pre>
+		</div>
+	</main>
+</body>
+</html>

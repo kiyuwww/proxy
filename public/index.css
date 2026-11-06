@@ -1,0 +1,318 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	background: #090909 !important;
+	font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	overflow: hidden;
+	color: #eee;
+}
+
+main {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 0 20px;
+	background: #090909;
+}
+
+/* ===== Brand ===== */
+.brand {
+	font-size: 13px;
+	font-weight: 500;
+	letter-spacing: 8px;
+	text-transform: uppercase;
+	color: #555;
+	margin-bottom: 40px;
+	user-select: none;
+}
+
+/* ===== Search bar ===== */
+.search {
+	width: min(620px, calc(100vw - 40px));
+	height: 64px;
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 0 20px;
+	background: #111111;
+	border: 1px solid #242424;
+	border-radius: 18px;
+	box-shadow:
+		0 20px 60px rgba(0, 0, 0, .45),
+		inset 0 1px 0 rgba(255, 255, 255, .025);
+	transition: border-color .3s ease, box-shadow .3s ease, background .3s ease;
+}
+
+.search:hover {
+	border-color: #303030;
+}
+
+.search:focus-within {
+	background: #121212;
+	border-color: #3a3a3a;
+	box-shadow:
+		0 24px 70px rgba(0, 0, 0, .55),
+		0 0 0 1px rgba(255, 255, 255, .025);
+}
+
+/* Иконка */
+.icon {
+	width: 20px !important;
+	height: 20px !important;
+	min-width: 20px !important;
+	min-height: 20px !important;
+	max-width: 20px !important;
+	max-height: 20px !important;
+	flex: 0 0 20px !important;
+	color: #777;
+	transition: color .3s ease;
+	display: block !important;
+}
+
+.search:focus-within .icon {
+	color: #bcbcbc;
+}
+
+/* Поле ввода */
+.input {
+	flex: 1 1 auto;
+	width: 100%;
+	height: 100%;
+	border: 0 !important;
+	outline: 0 !important;
+	background: transparent !important;
+	color: #eeeeee !important;
+	font-size: 16px;
+	font-weight: 400;
+	letter-spacing: -.01em;
+	font-family: inherit;
+	padding: 0 !important;
+	margin: 0 !important;
+	box-shadow: none !important;
+	-webkit-appearance: none !important;
+	appearance: none !important;
+}
+
+.input::placeholder {
+	color: #555 !important;
+	opacity: 1;
+}
+
+.input:focus::placeholder {
+	color: #444 !important;
+}
+
+/* Shortcut */
+.shortcut {
+	flex: 0 0 auto;
+	padding: 5px 9px;
+	border: 1px solid #282828;
+	border-radius: 8px;
+	color: #555;
+	background: #151515;
+	font-size: 11px;
+	letter-spacing: .04em;
+	font-weight: 500;
+	user-select: none;
+	white-space: nowrap;
+}
+
+/* ===== Tagline ===== */
+.tagline {
+	margin-top: 28px;
+	font-size: 13px;
+	color: #3a3a3a;
+	letter-spacing: 1.5px;
+	user-select: none;
+}
+
+/* ===== Errors ===== */
+.error-area {
+	position: absolute;
+	bottom: 40px;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	max-width: 90vw;
+	width: 100%;
+	padding: 0 16px;
+}
+
+#sj-error {
+	color: #ff6b6b !important;
+	white-space: pre-wrap;
+	font-size: 14px;
+}
+
+#sj-error-code {
+	font-size: 12px;
+	color: #888;
+	font-family: "Courier New", Courier, monospace;
+	margin-top: 6px;
+}
+
+/* ===== Proxy frame ===== */
+#sj-frame {
+	border: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #090909;
+	z-index: 100;
+}
+
+/* ===== Auth ===== */
+.hidden {
+	display: none !important;
+}
+
+/* ========== Адаптация ========== */
+@media (max-width: 480px) {
+	.search {
+		height: 56px;
+		padding: 0 16px;
+		gap: 12px;
+		border-radius: 16px;
+	}
+
+	.icon {
+		width: 18px !important;
+		height: 18px !important;
+		min-width: 18px !important;
+		min-height: 18px !important;
+		max-width: 18px !important;
+		max-height: 18px !important;
+		flex: 0 0 18px !important;
+	}
+
+	.input {
+		font-size: 15px;
+	}
+
+	.shortcut {
+		display: none;
+	}
+
+	.brand {
+		letter-spacing: 5px;
+		margin-bottom: 28px;
+	}
+
+	.tagline {
+		font-size: 12px;
+	}
+}
+
+@media (max-height: 500px) {
+	.brand {
+		margin-bottom: 20px;
+	}
+	.tagline {
+		margin-top: 18px;
+	}
+}
+
+/* ===== Auth card (centered login / registration) ===== */
+.auth-card {
+	width: min(380px, calc(100vw - 40px));
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 24px;
+	background: #111111;
+	border: 1px solid #242424;
+	border-radius: 18px;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+}
+
+.auth-input {
+	height: 48px !important;
+	padding: 0 16px !important;
+	background: #0c0c0c !important;
+	border: 1px solid #262626 !important;
+	border-radius: 12px;
+}
+
+.auth-input:focus-within,
+.auth-input:focus {
+	border-color: #3a3a3a !important;
+}
+
+.auth-buttons {
+	display: flex;
+	gap: 10px;
+	margin-top: 4px;
+}
+
+.auth-buttons button {
+	flex: 1 1 0;
+	height: 44px;
+	border-radius: 12px;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background .2s, border-color .2s, opacity .2s;
+}
+
+.auth-buttons button:disabled {
+	opacity: .5;
+	cursor: default;
+}
+
+.btn-primary {
+	border: 1px solid #d8d8d8;
+	background: #eeeeee;
+	color: #090909;
+}
+
+.btn-primary:hover:not(:disabled) {
+	background: #ffffff;
+}
+
+.btn-secondary {
+	border: 1px solid #303030;
+	background: #151515;
+	color: #ccc;
+}
+
+.btn-secondary:hover:not(:disabled) {
+	background: #1c1c1c;
+	border-color: #404040;
+}
+
+.auth-msg {
+	min-height: 18px;
+	font-size: 13px;
+	color: #ff6b6b;
+	text-align: center;
+}
+
+/* Logout sits in the corner so it does not push the centered content */
+#logout-btn {
+	position: fixed;
+	top: 16px;
+	right: 16px;
+	padding: 8px 14px;
+	border-radius: 10px;
+	border: 1px solid #303030;
+	background: #151515;
+	color: #ccc;
+	font-size: 13px;
+	cursor: pointer;
+	z-index: 200;
+}
+
+#logout-btn:hover {
+	background: #1c1c1c;
+	border-color: #404040;
+}
